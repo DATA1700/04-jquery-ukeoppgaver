@@ -4,6 +4,10 @@
    <meta charset="UTF-8">
    <title>jQuery ekstraoppgave 3</title>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+   <button onclick="skrivUtOppgaver()">Ta test!</button>
+   <ul id="liste"></ul>
    <script>
        const liste = $("#liste"); //document.getElementById('liste')
        const oppgaver = []
@@ -48,7 +52,7 @@
                oppgaveIndex++;
            }
            ut += '<button onclick="sjekkSvar()">Sjekk svar</button>'
-           liste.innerHTML = ut;
+           liste.html(ut);
        }
 
        function sjekkSvar() {
@@ -80,9 +84,5 @@
             }
         }
    </script>
-</head>
-<body>
-   <button onclick="skrivUtOppgaver()">Ta test!</button>
-   <ul id="liste"></ul>
 </body>
 </html>
