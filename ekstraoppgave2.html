@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+   <meta charset="UTF-8">
+   <title>jQuery ekstraoppgave 2</title>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+
+       let uferdig;
+       let ferdig;
+       let skrivInn;
+       $(document).ready(function() {
+           uferdig = $("#uferdig");
+           ferdig = $("#ferdig");
+           skrivInn = $("#skrivInn");
+       });
+
+       let id = 0;
+
+       function leggTilGjoremol() {
+           //Inkrementer id
+           id++;
+           let ut;
+           ut = '<li id="rad-' + id + '">'
+           ut += '<input id="sjekkboks-' + id + '" type="checkbox" onchange="veksleStatus(' + id + ')">'
+           ut += "<span>" + skrivInn.val() + "</span>"
+           ut += "</li>"
+
+           //Tøm skriv inn feltet
+           skrivInn.val('');
+
+           //Print gjøremål til tabell
+           uferdig.append(ut);
+       }
+
+       function veksleStatus(id) {
+           //Hent raden og sjekkboksen basert på id'en
+           const sjekkbox = $("#sjekkboks-" + id);
+           const rad = $("#rad-" + id);
+
+           //Flytt raden avhengig av om sjekkboksen er sjekket
+           if (sjekkbox.is(':checked')) {
+               rad.css({'text-decoration': 'line-through'});
+               ferdig.append(rad);
+           } else {
+               rad.css({'text-decoration': 'none'});
+               uferdig.append(rad);
+           }
+       }
+   </script>
+</head>
+<body>
+   <label for="skrivInn">Todo liste:</label>
+   <input id="skrivInn" type="text" placeholder="skriv inn gjøremål" onchange="leggTilGjoremol()">
+
+   <h1>Gjøremål</h1>
+   <ul id="uferdig"></ul>
+   <ul id="ferdig"></ul>
+</body>
+</html>
