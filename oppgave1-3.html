@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <title>jQuery oppgave 1-3</title>
+    <meta charset="UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+
+        //Oppgave 1
+        function printInfo() {
+            const navn = $("#navn").val();
+            const alder = $("#alder").val();
+            const output = $("#output");
+            if(!(alder > 0)) {
+                alert("Du må skrive inn en alder større enn 0!");
+            } else {
+                output.html("Hei, " + navn + ". Du er " + alder + " år gammel.")
+            }
+        }
+
+        //Oppgave 2
+        function fahrenheitToCelsius() {
+            const c = (5/9)* (Number($("#fahrenheit").val()) - 32);
+            const el = $("#celsius");
+            el.val(c);
+        }
+
+        function celsiusToFahrenheit() {
+            const f = (9/5) * Number($("#celsius").val()) + 32;
+            const el = $("#fahrenheit");
+            el.val(f);
+        }
+
+        //Oppgave 3
+        function pluss() {
+            const in_1 = Number($("#in_1").val());
+            const in_2 = Number($("#in_2").val());
+            const output = $("#kalk-output");
+            if(in_1 === "NaN" || in_2 === "NaN") {
+                alert("Feil tallformat, prøv igjen.");
+            } else {
+                output.html(in_1 + in_2);
+            }
+        }
+
+        function minus(){
+            const in_1 = Number($("#in_1").val());
+            const in_2 = Number($("#in_2").val());
+            const output = $("#kalk-output");
+            if(in_1 === "NaN" || in_2 === "NaN") {
+                alert("Feil tallformat, prøv igjen.");
+            } else {
+                output.html(in_1 - in_2);
+            }
+        }
+
+        function gange() {
+            const in_1 = Number($("#in_1").val());
+            const in_2 = Number($("#in_2").val());
+            const output = $("#kalk-output");
+            if(in_1 === "NaN" || in_2 === "NaN") {
+                alert("Feil tallformat, prøv igjen.");
+            } else {
+                output.html(in_1 * in_2);
+            }
+        }
+
+        function dele() {
+            const in_1 = Number($("#in_1").val());
+            const in_2 = Number($("#in_2").val());
+            const output = $("#kalk-output");
+            if(in_1 === "NaN" || in_2 === "NaN") {
+                alert("Feil tallformat, prøv igjen.");
+            } else {
+                output.html(in_1 / in_2);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Oppgave 1</h2>
+    Navn: <input id="navn" type="text" value=""/>
+    Alder: <input id="alder" type="text" value=""/>
+    <button id="navn_alder" onclick="printInfo()">Skriv ut navn og alder</button>
+    <div id="output"></div>
+
+    <h2>Oppgave 2</h2>
+    Fahrenheit:<input id="fahrenheit" type="text" onchange="fahrenheitToCelsius()" value=""/>
+    Celsius:<input id="celsius" type="text" onchange="celsiusToFahrenheit()" value=""/>
+
+    <h2>Oppgave 3</h2>
+    <input id="in_1" type="text" value=""/>
+    <input id="in_2" type="text" value=""/>
+    <button id="pluss" onclick="pluss()">+</button>
+    <button id="minus" onclick="minus()">-</button>
+    <button id="gange" onclick="gange()">*</button>
+    <button id="dele" onclick="dele()">/</button>
+    <div id="kalk-output"> </div>
+</body>
+</html>
